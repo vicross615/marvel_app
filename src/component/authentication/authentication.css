@@ -1,0 +1,121 @@
+/*reuseable components*/
+button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+}
+
+.authentication_wrapper{
+    background-image: url(./welcome2__uba.jpg);
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_wrapper {
+    display: flex;
+    background: whitesmoke;
+    min-height: 400px;
+    min-width: 300px;
+    border-radius: 7px;
+    padding: 28px 28px;
+    flex-direction: column;
+}
+
+.form_ {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    justify-content: space-between;
+}
+
+.form_wrapper_header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.form_header_logo{
+    width: 90px;
+    height: 50px;
+}
+
+.form_header_signing{
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+}
+.form_detail {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    color: #939aa0;
+}
+.form_detail_label {
+    margin-bottom: 5px;
+    font-size: 11px;
+}
+.form_input {
+    height: 30px;
+    border: 1px solid #c7c1c1;
+    background: whitesmoke;
+}
+
+
+
+.forgot_password {
+    font-size: 9px;
+    color: #b1aea9;
+}
+
+.login_button {
+    height: 45px;
+    background: #c82b1d;
+    margin-top: 20px;
+    border: none;
+}
+.login_button_text {
+    color: whitesmoke;
+    font-weight: 600;
+}
+.login_button_icon {
+    color: whitesmoke;
+}
+
+
+
+
+.dont_have_account {
+    font-size: 13px;
+    /* margin-bottom: 10px; */
+    color: #3a3734;
+    font-weight: 500;
+}
+.request_access {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.request_access_button {
+    height: 45px;
+    border: 1px solid #c82b1d;
+    color: #c82b1d;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+
+

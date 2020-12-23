@@ -1,0 +1,11 @@
+
+function ContentManagement() {
+    return (
+        <section>
+            ContentManagement is now live
+        </section>
+
+    );
+}
+
+export default ContentManagement;

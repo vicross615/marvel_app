@@ -1,10 +1,25 @@
 import './authentication.css'
 import logo from './uba_logo.png';
 
+import { useHistory } from "react-router-dom";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faCoffee } from '@fortawesome/fontawesome-free-solid'
+import { faAngleRight } from '@fortawesome/fontawesome-free-solid'
 
 function Authentication() {
+
+     const history = useHistory();
+
+        function handleClick() {
+            history.push("/reward");
+        }
+
+
+
+
+
+
+
     return (
         <section className="authentication_wrapper">
             <form className="form_wrapper">
@@ -37,7 +52,7 @@ function Authentication() {
                             <a>Forgot your password</a>
                         </span>
 
-                        <button className='login_button'>
+                        <button className='login_button' onClick={handleClick}>
                             <span className='login_button_text'>LOGIN</span>
                             <FontAwesomeIcon icon={faAngleRight} className='login_button_icon'/>
                         </button>
@@ -50,7 +65,7 @@ function Authentication() {
                         </label>
                         <button className='request_access_button' >
                             <span>Request For Access</span>
-                            <FontAwesomeIcon icon={faCoffee} />
+                            <FontAwesomeIcon icon={faAngleRight} />
                         </button>
                     </section>
                 </div>

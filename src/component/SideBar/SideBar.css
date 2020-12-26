@@ -1,0 +1,10 @@
+.sidebar_wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    height: 700px;
+    width: 250px;
+    background: #272525;
+    justify-content: center;
+    align-items: center;
+}

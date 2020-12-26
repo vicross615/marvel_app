@@ -1,0 +1,35 @@
+.dashboard_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.dashboard_header {
+    display: flex;
+    width: inherit;
+    justify-content: space-between;
+}
+
+.dashboard_header_container {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard_search {
+    display: flex;
+    height: 36px;
+    border: 0.5px solid #C0C0C0;
+    width: 229px;
+    justify-content: space-between;
+    align-items: center;
+}
+.search_input {
+    width: 200px;
+    border: none;
+    height: 80%;
+}
+.search_logo {
+    color: #afa7a7;
+    margin: 10px;
+}

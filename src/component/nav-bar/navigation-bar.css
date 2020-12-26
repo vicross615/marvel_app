@@ -1,0 +1,21 @@
+
+.navigation_wrapper {
+    display: flex;
+    height: 40px;
+    box-shadow: 5px 1px 1px #cec9c9;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: rgb(255 255 255);
+}
+.reward_logo {
+    width: 140px;
+    height: 40px;
+}
+.login_button_icon, .userPix {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.nav_user_block {
+    display: flex;
+}

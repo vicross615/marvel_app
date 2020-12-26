@@ -9,7 +9,7 @@ export default function Routes() {
     return (
         <Switch>
             <Route path="/" exact component={Authentication} />
-            <Route path="/reward" component={Reward} isPrivate />
+            <Route path="/reward" component={Reward} />
             {/* redirect user to SignIn page if route does not exist and user is not authenticated */}
             <Route component={Authentication} />
         </Switch>

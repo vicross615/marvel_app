@@ -1,0 +1,8 @@
+.reward_content {
+    display: flex;
+    padding: 39px 90px;
+    flex: 1;
+}
+.reward_content_wrapper {
+    display: flex;
+}

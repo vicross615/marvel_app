@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTable, usePagination } from 'react-table'
 
+import makeData from './makeData'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/fontawesome-free-solid'
+import { faSearch, faAngleRight, faAngleLeft } from '@fortawesome/fontawesome-free-solid'
 
 
 
@@ -13,44 +15,39 @@ function UserManagement() {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Name',
-                columns: [
-                    {
-                        Header: 'First Name',
-                        accessor: 'firstName',
-                    },
-                    {
-                        Header: 'Last Name',
-                        accessor: 'lastName',
-                    },
-                ],
+                Header: "ID",
+                accessor: 'id'
             },
             {
-                Header: 'Info',
-                columns: [
-                    {
-                        Header: 'Age',
-                        accessor: 'age',
-                    },
-                    {
-                        Header: 'Visits',
-                        accessor: 'visits',
-                    },
-                    {
-                        Header: 'Status',
-                        accessor: 'status',
-                    },
-                    {
-                        Header: 'Profile Progress',
-                        accessor: 'progress',
-                    },
-                ],
+                Header: "First Name",
+                accessor: 'firstName',
             },
+            {
+                Header: 'Last Name',
+                accessor: 'lastName'
+            },
+            {
+                Header: 'Email',
+                accessor: 'email'
+            },
+            {
+                Header: 'Phone',
+                accessor: 'phone'
+            },
+            {
+                Header: 'Joined',
+                accessor: 'joined'
+            },
+            {
+
+                accessor: '...'
+            }
+
         ],
         []
     )
 
-    const data = React.useMemo(() => makeData(100000), [])
+    const data = React.useMemo(() => makeData(20), [])
 
 
     return (
@@ -102,12 +99,13 @@ function Table({ columns, data }) {
         nextPage,
         previousPage,
         setPageSize,
-        state: { pageIndex, pageSize },
+        setPageCount,
+        state: { pageIndex, pageSize =5},
     } = useTable(
         {
             columns,
             data,
-            initialState: { pageIndex: 2 },
+            initialState: { pageSize: 8 }
         },
         usePagination
     )
@@ -115,25 +113,11 @@ function Table({ columns, data }) {
     // Render the UI for your table
     return (
         <>
-        <pre>
-        <code>
-          {JSON.stringify(
-              {
-                  pageIndex,
-                  pageSize,
-                  pageCount,
-                  canNextPage,
-                  canPreviousPage,
-              },
-              null,
-              2
-          )}
-        </code>
-      </pre>
-        <table {...getTableProps()}>
+
+        <table {...getTableProps()} defaultPageSize={pageSize}>
             <thead>
             {headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
+                <tr {...headerGroup.getHeaderGroupProps()} >
                     {headerGroup.headers.map(column => (
                         <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                     ))}
@@ -152,54 +136,49 @@ function Table({ columns, data }) {
                 )
             })}
             </tbody>
+
         </table>
-        {/*
-        Pagination can be built however you'd like.
-        This is just a very basic UI implementation:
-      */}
+
+
+
         <div className="pagination">
-            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                {'<<'}
-            </button>{' '}
-            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                {'<'}
-            </button>{' '}
-            <button onClick={() => nextPage()} disabled={!canNextPage}>
-                {'>'}
-            </button>{' '}
-            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                {'>>'}
-            </button>{' '}
-            <span>
-          Page{' '}
+            <span >
+                Displaying Users
                 <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>
-            <span>
-          | Go to page:{' '}
-                <input
-                    type="number"
-                    defaultValue={pageIndex + 1}
-                    onChange={e => {
-                        const page = e.target.value ? Number(e.target.value) - 1 : 0
-                        gotoPage(page)
-                    }}
-                    style={{ width: '100px' }}
-                />
-        </span>{' '}
+                {pageIndex + 1} of {pageOptions.length}
+              </strong>{' '}
+              Total
+            </span>
+            <div>
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    <FontAwesomeIcon icon={faAngleLeft} />
+                </button>{' '}
+                <span>
+                    Page{' '}
+                    <strong>
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
+                </span>
+                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                    <FontAwesomeIcon icon={faAngleRight} />
+                </button>{' '}
+            </div>
+
             <select
                 value={pageSize}
                 onChange={e => {
                     setPageSize(Number(e.target.value))
                 }}
             >
-                {[10, 20, 30, 40, 50].map(pageSize => (
+                {[8, 16, 32, 40].map(pageSize => (
                     <option key={pageSize} value={pageSize}>
                         Show {pageSize}
                     </option>
                 ))}
             </select>
+            <div>
+                Download: <a>CSV XML JSON</a>
+            </div>
         </div>
         </>
     )
@@ -211,30 +190,39 @@ const Styles = styled.div`
 
   table {
     border-spacing: 0;
-    border: 1px solid black;
-
+    border-collapse:separate; 
+    border-spacing:0 7px; 
+    width: 100%;
+    color: '#ddd';
+    
     tr {
+        border: 1px solid black;
+           line-height: 50px;
       :last-child {
         td {
-          border-bottom: 0;
+          border-bottom: 1px solid #ddd;
         }
       }
     }
-
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
+    
+    th, td {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+    }
+    
+    
+    tbody{
+        color: '#777171'
     }
   }
 
   .pagination {
     padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pagination > div {
+     display: flex;
+    justify-content: space-between;
   }
 `

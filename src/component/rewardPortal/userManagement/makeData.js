@@ -8,20 +8,25 @@ const range = len => {
     return arr
 }
 
+
+let userCounter = 1;
+
 const newPerson = () => {
     const statusChance = Math.random()
+
+    function randomDate(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+
+
+
     return {
+        id: userCounter + 1,
         firstName: namor.generate({ words: 1, numbers: 0 }),
         lastName: namor.generate({ words: 1, numbers: 0 }),
-        age: Math.floor(Math.random() * 30),
-        visits: Math.floor(Math.random() * 100),
-        progress: Math.floor(Math.random() * 100),
-        status:
-            statusChance > 0.66
-                ? 'relationship'
-                : statusChance > 0.33
-                ? 'complicated'
-                : 'single',
+        email: namor.generate({ words: 1, numbers: 0 }) + '@gmail.com',
+        phone: '080' + Math.floor(100000 + Math.random() * 90000000),
+        joined: "12th Oct 2012",
     }
 }
 

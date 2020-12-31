@@ -16,6 +16,15 @@
     align-items: center;
 }
 
+.dashboard_header_title {
+    color: #4A4A4A;
+    font-family: CircularStd;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    font-weight: 550;
+}
+
 .dashboard_search {
     display: flex;
     height: 36px;

@@ -12,8 +12,8 @@ function App() {
   return (
       <Router history={history}>
           <Switch>
-              <Route path="/" exact component={Authentication} />
-              <Route path="/reward" component={Reward} />
+              <Route exact path="/"><Authentication /></Route>
+              <Route path="/reward"><Reward /></Route>
               {/* redirect user to SignIn page if route does not exist and user is not authenticated */}
               <Route component={Authentication} />
           </Switch>

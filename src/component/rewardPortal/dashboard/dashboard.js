@@ -1,20 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faCoffee } from '@fortawesome/fontawesome-free-solid'
 
+import TimeSelector from '../../timeSelector/timeSelector'
+
 import {  Switch, Link, Route, useHistory } from 'react-router-dom';
 
 import { useTable } from 'react-table';
 
-import data from "./data.json";
+import {data} from "./data.js";
 
 import logo from './uba_logo.png';
 
 import './dashboard.css'
 
 
-function Dashboard() {
+function Dashboard({}) {
 
     const history = useHistory();
+
+    const [dashboardData, setData] = [data.today]
+
 
 
     function handleClick() {
@@ -29,8 +34,10 @@ function Dashboard() {
 
             <div className='dashboard_header'>
                 <div className='dashboard_header_container'>
-                    <span classname='dashboard_header_title'>Dashboard</span>
-                    <div>TIME SELECTOR HERE</div>
+                    <span className='dashboard_header_title'>Dashboard</span>
+                    <div>
+                        <TimeSelector  setData={setData} />
+                    </div>
                 </div>
 
                 <div className='dashboard_search'>

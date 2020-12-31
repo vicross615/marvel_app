@@ -1,6 +1,11 @@
 import React from 'react'
+import {  useParams } from 'react-router-dom';
+
+
 import styled from 'styled-components'
-import { useTable, usePagination } from 'react-table'
+import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
+
+import TimeSelector from '../../timeSelector/timeSelector'
 
 import makeData from './makeData'
 
@@ -8,9 +13,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faAngleRight, faAngleLeft } from '@fortawesome/fontawesome-free-solid'
 
 
+import {CSVLink} from "react-csv";
+
+
+
 
 
 function UserManagement() {
+
+    const { name } = useParams();
+
 
     const columns = React.useMemo(
         () => [
@@ -55,7 +67,9 @@ function UserManagement() {
             <div className='dashboard_header'>
                 <div className='dashboard_header_container'>
                     <span classname='dashboard_header_title'>Users</span>
-                    <div>TIME SELECTOR HERE</div>
+                    <div>
+                        <TimeSelector  setData={makeData} />
+                    </div>
                 </div>
 
                 <div className='dashboard_search'>
@@ -78,9 +92,63 @@ export default UserManagement;
 
 
 
+function GlobalFilter({
+                          preGlobalFilteredRows,
+                          globalFilter,
+                          setGlobalFilter,
+                      }) {
+    const count = preGlobalFilteredRows.length
+    const [value, setValue] = React.useState(globalFilter)
+    const onChange = useAsyncDebounce(value => {
+        setGlobalFilter(value || undefined)
+    }, 200)
+
+    return (
+        <span>
+            Search:{' '}
+            <input
+                className="form-control"
+                value={value || ""}
+                onChange={e => {
+                    setValue(e.target.value);
+                    onChange(e.target.value);
+                }}
+                placeholder={`${count} records...`}
+            />
+        </span>
+    )
+}
+
+function DefaultColumnFilter({
+                                 column: { filterValue, preFilteredRows, setFilter },
+                             }) {
+    const count = preFilteredRows.length
+
+    return (
+        <input
+            className="form-control"
+            value={filterValue || ''}
+            onChange={e => {
+                setFilter(e.target.value || undefined)
+            }}
+            placeholder={`Search ${count} records...`}
+        />
+    )
+}
+
+
+
 
 
 function Table({ columns, data }) {
+
+    const defaultColumn = React.useMemo(
+        () => ({
+            // Default Filter UI
+            Filter: DefaultColumnFilter,
+        }),
+        []
+    )
     // Use the state and functions returned from useTable to build your UI
     const {
         getTableProps,
@@ -101,18 +169,35 @@ function Table({ columns, data }) {
         setPageSize,
         setPageCount,
         state: { pageIndex, pageSize =5},
+        state,
+        preGlobalFilteredRows,
+        setGlobalFilter,
     } = useTable(
         {
             columns,
             data,
+            defaultColumn,
             initialState: { pageSize: 8 }
         },
+        useFilters,
+        useGlobalFilter,
         usePagination
     )
+
+
+    //spool users
+    function spoolUsers(users) {
+        console.log(users)
+    }
 
     // Render the UI for your table
     return (
         <>
+        <GlobalFilter
+            preGlobalFilteredRows={preGlobalFilteredRows}
+            globalFilter={state.globalFilter}
+            setGlobalFilter={setGlobalFilter}
+        />
 
         <table {...getTableProps()} defaultPageSize={pageSize}>
             <thead>
@@ -140,7 +225,6 @@ function Table({ columns, data }) {
         </table>
 
 
-
         <div className="pagination">
             <span >
                 Displaying Users
@@ -164,20 +248,14 @@ function Table({ columns, data }) {
                 </button>{' '}
             </div>
 
-            <select
-                value={pageSize}
-                onChange={e => {
-                    setPageSize(Number(e.target.value))
-                }}
-            >
-                {[8, 16, 32, 40].map(pageSize => (
-                    <option key={pageSize} value={pageSize}>
-                        Show {pageSize}
-                    </option>
-                ))}
-            </select>
-            <div>
-                Download: <a>CSV XML JSON</a>
+            <div className='download_users'  >
+                Download: <a href="#">CSV XML JSON</a>
+                <CSVLink
+                    data={data}
+                    filename="data.csv"
+                    className="hidden"
+                    ref={(r) => data = r}
+                    target="_blank"/>
             </div>
         </div>
         </>
@@ -220,9 +298,45 @@ const Styles = styled.div`
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   .pagination > div {
-     display: flex;
-    justify-content: space-between;
+         display: flex;
+    align-items: center;
+    color: #9B9B9B;
+    font-family: CircularStd;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
   }
+  
+  .pagination > span{
+  font-family: CircularStd;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: left;
+  }
+  
+  .pagination > div > button {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      width: 36px;
+      height: 36px;
+  }
+  
+  .pagination > div > span {
+        margin: 0px 50px;
+  }
+  
+  .download_users {
+      color: #777777;
+      font-family: CircularStd;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: right;
+  }
+  
+  
+  
+  
 `

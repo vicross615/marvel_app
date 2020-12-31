@@ -1,0 +1,89 @@
+.time_selector_toggle_wrapper {
+    display: flex;
+    background-color: #ECECEC;
+    border-radius: 12px;
+    width: 116px;
+    height: 24px;
+    align-items: center;
+}
+
+.time_selector_toggle_day {
+    color: #C0C0C0;
+    font-family: CircularStd;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+}
+
+.time_selector_toggle_time {
+    color: #4A4A4A;
+    font-family: CircularStd;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+}
+
+.time_selector_toggle_icon {
+    background-color: #2F2D2E;
+    border-radius: 12px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    color: papayawhip;
+    align-items: center;
+    justify-content: center;
+}
+
+.time_selector_container {
+    display: flex;
+    padding: 20px 5px;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+    width: 196px;
+    height: 312px;
+    justify-content: space-between;
+}
+
+.time_selector {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    width: 155px;
+    height: 28px;
+    margin-bottom: 7px;
+    color: #777777;
+    font-family: CircularStd;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+}
+.time_selector:hover {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.time_control {
+    display: flex;
+}
+.time_control > button {
+    border-radius: 13.5px;
+    width: 59px;
+    height: 27px;
+    color: #121312;
+    font-family: CircularStd;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: left;
+    margin-right: 10px;
+}
+.time_control > button:hover {
+    background-color: #d4baab;
+}
+.time_control > button:active {
+    background-color: #D42E12;
+}

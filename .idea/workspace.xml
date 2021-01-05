@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a12b6d3f-7c52-45f7-a6ef-211db78afb66" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.eslintcache" afterPath="$PROJECT_DIR$/.eslintcache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js" afterPath="$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js" afterPath="$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,18 +58,8 @@
       <file leaf-file-name="userManagement.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="129" column="0" lean-forward="false" selection-start-line="125" selection-start-column="2" selection-end-line="129" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tabelStyling.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/component/util/table/tabelStyling.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+            <state relative-caret-position="277">
+              <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -82,6 +75,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="timeSelector.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="20" column="82" lean-forward="false" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+                <marker date="1609875066615" expanded="true" signature="905:1448" ph="..." />
+                <marker date="1609875066615" expanded="true" signature="967:1425" ph="..." />
+                <marker date="1609875066615" expanded="true" signature="1024:1397" ph="..." />
+                <marker date="1609875066615" expanded="true" signature="1531:2099" ph="..." />
+                <marker date="1609875066615" expanded="true" signature="1620:2054" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -92,10 +102,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Authentication.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Authentication.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/authentication/Authentication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="-527">
               <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
@@ -183,17 +193,17 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/component/util/timeSelector/dates.js" />
         <option value="$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.css" />
-        <option value="$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js" />
         <option value="$PROJECT_DIR$/src/component/util/SideBar/SideBar.css" />
         <option value="$PROJECT_DIR$/src/component/util/SideBar/SideBar.js" />
         <option value="$PROJECT_DIR$/src/component/rewardPortal/reward.js" />
         <option value="$PROJECT_DIR$/src/component/rewardPortal/dashboard/data.js" />
         <option value="$PROJECT_DIR$/src/component/rewardPortal/dashboard/dashboard.js" />
         <option value="$PROJECT_DIR$/src/component/rewardPortal/reward.css" />
-        <option value="$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js" />
         <option value="$PROJECT_DIR$/src/component/rewardPortal/dashboard/dashboard.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/component/authentication/Authentication.js" />
+        <option value="$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js" />
+        <option value="$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js" />
       </list>
     </option>
   </component>
@@ -447,15 +457,16 @@
       <workItem from="1608539864169" duration="12756000" />
       <workItem from="1608661059831" duration="70126000" />
       <workItem from="1609152287757" duration="73032000" />
-      <workItem from="1609798886612" duration="3341000" />
+      <workItem from="1609798886612" duration="4715000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159255000" />
+    <option name="totallyTimeSpent" value="160629000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -466,7 +477,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2962515" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2962515" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17811158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -724,20 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <marker date="1609705113175" expanded="true" signature="944:1487" ph="..." />
-            <marker date="1609705113175" expanded="true" signature="1006:1464" ph="..." />
-            <marker date="1609705113175" expanded="true" signature="1063:1436" ph="..." />
-            <marker date="1609705113175" expanded="true" signature="1570:2138" ph="..." />
-            <marker date="1609705113175" expanded="true" signature="1659:2093" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/rewardPortal/dashboard/data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
@@ -799,14 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="129" column="0" lean-forward="false" selection-start-line="125" selection-start-column="2" selection-end-line="129" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/rewardPortal/dashboard/dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
@@ -862,9 +851,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/authentication/Authentication.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="-527">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/rewardPortal/userManagement/userManagement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/util/timeSelector/timeSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="82" lean-forward="false" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <marker date="1609875066615" expanded="true" signature="905:1448" ph="..." />
+            <marker date="1609875066615" expanded="true" signature="967:1425" ph="..." />
+            <marker date="1609875066615" expanded="true" signature="1024:1397" ph="..." />
+            <marker date="1609875066615" expanded="true" signature="1531:2099" ph="..." />
+            <marker date="1609875066615" expanded="true" signature="1620:2054" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

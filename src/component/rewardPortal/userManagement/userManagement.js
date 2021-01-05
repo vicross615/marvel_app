@@ -96,6 +96,7 @@ const  Styles = styled.div`
     text-align: center;
   }
 
+
   .pagination > span{
   font-family: CircularStd;
   font-size: 12px;

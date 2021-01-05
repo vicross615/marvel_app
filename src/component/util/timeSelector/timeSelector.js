@@ -18,9 +18,7 @@ function TimeSelector({ setSelectTime,selectTimeRange}) {
 
     const setTime = (e) => {
         e.preventDefault()
-         console.log(document.getElementsByClassName('time_selector').innerHTML)
-
-        selectTimeRange(e.target.value)
+       //  console.log(document.getElementsByClassName('time_selector').innerHTML)
         toggleTimeSelector()
 
     };

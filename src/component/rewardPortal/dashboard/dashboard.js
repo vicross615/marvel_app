@@ -1,29 +1,51 @@
+import React, { useState } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faCoffee } from '@fortawesome/fontawesome-free-solid'
 
-import TimeSelector from '../../timeSelector/timeSelector'
+import TimeSelector from '../../util/timeSelector/timeSelector'
 
 import {  Switch, Link, Route, useHistory } from 'react-router-dom';
 
 import { useTable } from 'react-table';
 
-import {data} from "./data.js";
+import {today} from "./data.js";
+import {yesterday} from "./data.js";
 
 import logo from './uba_logo.png';
+import purple from './purple.png';
+import summary_alltime from './summary_alltime.png';
 
 import './dashboard.css'
+import {missing , poster1, poster2, poster3, poster4} from "./data.js";
+
 
 
 function Dashboard({}) {
 
     const history = useHistory();
 
-    const [dashboardData, setData] = [data.today]
+    const [dashboardData, setDashboardData] = useState(today)
+    const [summaryDataLogo, setSummaryData] = useState(logo)
 
 
+    function updateFieldChanged() {
+        setSummaryData(purple)
+    }
+    function selectTimeRange(e) {
+        // var timeRange = e.currentTarget.value
+        var items = ['Today', 'Yesterday', 'secondDay','thirdDay', 'fourthDay']
+        var item = items[Math.floor(Math.random() * items.length)];
 
-    function handleClick() {
-        history.push("/reward/reporting");
+        switch (item) {
+            case 'Today':
+                setDashboardData(today)
+                break;
+            case 'Yesterday':
+                setDashboardData(yesterday)
+                break;
+        }
+
     }
 
 
@@ -35,8 +57,9 @@ function Dashboard({}) {
             <div className='dashboard_header'>
                 <div className='dashboard_header_container'>
                     <span className='dashboard_header_title'>Dashboard</span>
+
                     <div>
-                        <TimeSelector  setData={setData} />
+                        <TimeSelector selectTimeRange={selectTimeRange} setDashboardData={setDashboardData} />
                     </div>
                 </div>
 
@@ -48,15 +71,14 @@ function Dashboard({}) {
 
             <div className='dashboard_content'>
                 <div className='dashboard_card_container'>
-                    {data.map((postData, key) => {
-                        console.log(postData);
+                    {dashboardData.map((postData, key) => {
                         return (
                             <div key={key} className='dashboard_card' style={
                                 {borderBottomColor: postData.color}
                             }>
                                 <span>{postData.value}</span>
                                 <div > {postData.owner} </div>
-                                <img src={postData.indicator} />
+                                <img src={purple} />
                             </div>
                         );
                     })}
@@ -68,23 +90,18 @@ function Dashboard({}) {
                         <div style={
                             {display: 'flex'}
                         }>
-                            <button onClick={handleClick}>
-                                <Link to={`/reward/dashboard/month`}>Month</Link>
+                            {/*<button onClick={updateFieldChanged()}>*/}
+                                {/*<Link to={`/reward/dashboard/month`}>Month</Link>*/}
 
-                            </button>
-                            <button onClick={handleClick}>
-                                <Link to={`/reward/dashboard/all_time`}>All time</Link>
-
+                            {/*</button>*/}
+                            <button onClick={updateFieldChanged}>
+                                <a >All time</a>
                             </button>
                         </div>
                     </div>
 
-                    <div>
-                        <Switch>
-                            <Route  path={`/reward/dashboard/month`} exact component={Month}/>
-                            <Route path={`/reward/dashboard/all_time`} exact component={AllTime}/>
-                            <Route />
-                        </Switch>
+                    <div className='dashboard_summary_chart_wrapper'>
+                        <img src={summary_alltime} alt="Logo" className="dashboard_summary_chart" />
                     </div>
                 </div>
             </div>

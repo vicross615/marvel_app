@@ -1,11 +1,14 @@
 import React from 'react'
 import {  useParams } from 'react-router-dom';
 
-
-import styled from 'styled-components'
 import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
 
-import TimeSelector from '../../timeSelector/timeSelector'
+import styled from 'styled-components'
+
+import TimeSelector from '../../util/timeSelector/timeSelector'
+import Table from '../../util/table/Table'
+// import Styles from '../../util/table/tabelStyling'
+
 
 import makeData from './makeData'
 
@@ -21,68 +24,22 @@ import {CSVLink} from "react-csv";
 
 function UserManagement() {
 
-    const { name } = useParams();
-
-
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: "ID",
-                accessor: 'id'
-            },
-            {
-                Header: "First Name",
-                accessor: 'firstName',
-            },
-            {
-                Header: 'Last Name',
-                accessor: 'lastName'
-            },
-            {
-                Header: 'Email',
-                accessor: 'email'
-            },
-            {
-                Header: 'Phone',
-                accessor: 'phone'
-            },
-            {
-                Header: 'Joined',
-                accessor: 'joined'
-            },
-            {
-
-                accessor: '...'
-            }
-
-        ],
-        []
-    )
-
-    const data = React.useMemo(() => makeData(20), [])
-
 
     return (
         <section className='dashboard_wrapper'>
-            <div className='dashboard_header'>
-                <div className='dashboard_header_container'>
-                    <span classname='dashboard_header_title'>Users</span>
-                    <div>
-                        <TimeSelector  setData={makeData} />
-                    </div>
-                </div>
 
-                <div className='dashboard_search'>
-                    <input className='search_input' placeholder='Search' />
-                    <FontAwesomeIcon icon={faSearch} className='search_logo' />
-                </div>
-            </div>
 
-            <div>
-                <Styles>
-                    <Table columns={columns} data={data} />
-                </Styles>
-            </div>
+            {/*<Switch>*/}
+                {/*<Route path={`${path}/:name`}>*/}
+                    {/*<AdminUsers />*/}
+                {/*</Route>*/}
+
+                {/*<Route path={`${path}/:name`}>*/}
+                    {/*<Users />*/}
+                {/*</Route>*/}
+            {/*</Switch>*/}
+
+            <Users />
         </section>
 
     );
@@ -92,187 +49,16 @@ export default UserManagement;
 
 
 
-function GlobalFilter({
-                          preGlobalFilteredRows,
-                          globalFilter,
-                          setGlobalFilter,
-                      }) {
-    const count = preGlobalFilteredRows.length
-    const [value, setValue] = React.useState(globalFilter)
-    const onChange = useAsyncDebounce(value => {
-        setGlobalFilter(value || undefined)
-    }, 200)
-
-    return (
-        <span>
-            Search:{' '}
-            <input
-                className="form-control"
-                value={value || ""}
-                onChange={e => {
-                    setValue(e.target.value);
-                    onChange(e.target.value);
-                }}
-                placeholder={`${count} records...`}
-            />
-        </span>
-    )
-}
-
-function DefaultColumnFilter({
-                                 column: { filterValue, preFilteredRows, setFilter },
-                             }) {
-    const count = preFilteredRows.length
-
-    return (
-        <input
-            className="form-control"
-            value={filterValue || ''}
-            onChange={e => {
-                setFilter(e.target.value || undefined)
-            }}
-            placeholder={`Search ${count} records...`}
-        />
-    )
-}
-
-
-
-
-
-function Table({ columns, data }) {
-
-    const defaultColumn = React.useMemo(
-        () => ({
-            // Default Filter UI
-            Filter: DefaultColumnFilter,
-        }),
-        []
-    )
-    // Use the state and functions returned from useTable to build your UI
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        prepareRow,
-        page, // Instead of using 'rows', we'll use page,
-        // which has only the rows for the active page
-
-        // The rest of these things are super handy, too ;)
-        canPreviousPage,
-        canNextPage,
-        pageOptions,
-        pageCount,
-        gotoPage,
-        nextPage,
-        previousPage,
-        setPageSize,
-        setPageCount,
-        state: { pageIndex, pageSize =5},
-        state,
-        preGlobalFilteredRows,
-        setGlobalFilter,
-    } = useTable(
-        {
-            columns,
-            data,
-            defaultColumn,
-            initialState: { pageSize: 8 }
-        },
-        useFilters,
-        useGlobalFilter,
-        usePagination
-    )
-
-
-    //spool users
-    function spoolUsers(users) {
-        console.log(users)
-    }
-
-    // Render the UI for your table
-    return (
-        <>
-        <GlobalFilter
-            preGlobalFilteredRows={preGlobalFilteredRows}
-            globalFilter={state.globalFilter}
-            setGlobalFilter={setGlobalFilter}
-        />
-
-        <table {...getTableProps()} defaultPageSize={pageSize}>
-            <thead>
-            {headerGroups.map(headerGroup => (
-                <tr {...headerGroup.getHeaderGroupProps()} >
-                    {headerGroup.headers.map(column => (
-                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                    ))}
-                </tr>
-            ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-            {page.map((row, i) => {
-                prepareRow(row)
-                return (
-                    <tr {...row.getRowProps()}>
-                        {row.cells.map(cell => {
-                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                        })}
-                    </tr>
-                )
-            })}
-            </tbody>
-
-        </table>
-
-
-        <div className="pagination">
-            <span >
-                Displaying Users
-                <strong>
-                {pageIndex + 1} of {pageOptions.length}
-              </strong>{' '}
-              Total
-            </span>
-            <div>
-                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    <FontAwesomeIcon icon={faAngleLeft} />
-                </button>{' '}
-                <span>
-                    Page{' '}
-                    <strong>
-                        {pageIndex + 1} of {pageOptions.length}
-                    </strong>{' '}
-                </span>
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    <FontAwesomeIcon icon={faAngleRight} />
-                </button>{' '}
-            </div>
-
-            <div className='download_users'  >
-                Download: <a href="#">CSV XML JSON</a>
-                <CSVLink
-                    data={data}
-                    filename="data.csv"
-                    className="hidden"
-                    ref={(r) => data = r}
-                    target="_blank"/>
-            </div>
-        </div>
-        </>
-    )
-}
-
-
-const Styles = styled.div`
+const  Styles = styled.div`
   padding: 1rem;
 
   table {
     border-spacing: 0;
-    border-collapse:separate; 
-    border-spacing:0 7px; 
+    border-collapse:separate;
+    border-spacing:0 7px;
     width: 100%;
     color: '#ddd';
-    
+
     tr {
         border: 1px solid black;
            line-height: 50px;
@@ -282,13 +68,13 @@ const Styles = styled.div`
         }
       }
     }
-    
+
     th, td {
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
     }
-    
-    
+
+
     tbody{
         color: '#777171'
     }
@@ -309,25 +95,25 @@ const Styles = styled.div`
     line-height: 21px;
     text-align: center;
   }
-  
+
   .pagination > span{
   font-family: CircularStd;
   font-size: 12px;
   line-height: 14px;
   text-align: left;
   }
-  
+
   .pagination > div > button {
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 4px;
       width: 36px;
       height: 36px;
   }
-  
+
   .pagination > div > span {
         margin: 0px 50px;
   }
-  
+
   .download_users {
       color: #777777;
       font-family: CircularStd;
@@ -337,6 +123,128 @@ const Styles = styled.div`
   }
   
   
-  
-  
+  @media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "ID"; }
+		td:nth-of-type(2):before { content: "First Name"; }
+		td:nth-of-type(3):before { content: "Last Name"; }
+		td:nth-of-type(4):before { content: "Email"; }
+		td:nth-of-type(5):before { content: "Phone"; }
+		td:nth-of-type(6):before { content: "Joined"; }
+	}
+
 `
+
+export const AdminUsers = ()=> (
+    <div>
+        {/*<Styles>*/}
+            {/*<Table columns={columns} data={data} componentHeader={userManagementHeader}/>*/}
+        {/*</Styles>*/}
+    </div>
+);
+
+
+
+function Users() {
+
+const columns = React.useMemo(
+    () => [
+        {
+            Header: "ID",
+            accessor: 'id'
+        },
+        {
+            Header: "First Name",
+            accessor: 'firstName',
+        },
+        {
+            Header: 'Last Name',
+            accessor: 'lastName'
+        },
+        {
+            Header: 'Email',
+            accessor: 'email'
+        },
+        {
+            Header: 'Phone',
+            accessor: 'phone'
+        },
+        {
+            Header: 'Joined',
+            accessor: 'joined'
+        },
+        {
+
+            accessor: '...'
+        }
+
+    ],
+    []
+    )
+
+    const { name } = useParams();
+    const userManagementHeader = 'Users'
+    const [sortedField, setSortedField] = React.useState(null);
+
+
+
+
+    const data = React.useMemo(() => makeData(20), [])
+
+
+    return (
+        <div>
+            <Styles>
+                <Table columns={columns} data={data} componentHeader={userManagementHeader}/>
+            </Styles>
+        </div>
+        )
+
+}
+

@@ -9,7 +9,6 @@ const range = len => {
 }
 
 
-let userCounter = 1;
 
 const newPerson = () => {
     const statusChance = Math.random()
@@ -21,7 +20,7 @@ const newPerson = () => {
 
 
     return {
-        id: userCounter + 1,
+        id: 10,
         firstName: namor.generate({ words: 1, numbers: 0 }),
         lastName: namor.generate({ words: 1, numbers: 0 }),
         email: namor.generate({ words: 1, numbers: 0 }) + '@gmail.com',
@@ -30,7 +29,7 @@ const newPerson = () => {
     }
 }
 
-export default function makeData(...lens) {
+export default function userManagementData(...lens) {
     const makeDataLevel = (depth = 0) => {
         const len = lens[depth]
         return range(len).map(d => {

@@ -6,3 +6,17 @@
 .reward_content_wrapper {
     display: flex;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .reward_content_wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reward_content {
+        display: flex;
+         padding: 0px;
+        flex: 1 1;
+    }
+}

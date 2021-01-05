@@ -1,8 +1,22 @@
 
 function ContentManagement() {
+
+    const { values, useInput, isValid } = useForm({
+        username: '',
+        email: ''
+    });
+
+
     return (
-        <section>
-            ContentManagement is now live
+        <section className='content_management_wrapper'>
+            <span>
+                Merchant
+            </span>
+           <div>
+                <span>
+                    There are no merchant partner yet. <a>Create One</a>
+                </span>
+           </div>
         </section>
 
     );

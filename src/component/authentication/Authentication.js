@@ -11,7 +11,7 @@ function Authentication() {
      const history = useHistory();
 
         function handleClick() {
-            history.push("/reward");
+            history.push("/reward/dashboard");
         }
 
 

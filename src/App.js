@@ -1,5 +1,5 @@
 import './App.css';
-
+import { Helmet } from 'react-helmet'
 
 
 import Reward from "./component/rewardPortal/reward";
@@ -17,8 +17,14 @@ import {
 import Dashboard from "./component/rewardPortal/dashboard/dashboard";
 
 export default function App() {
+    const TITLE = 'Marvel App'
+
     return (
         <Router >
+            <Helmet>
+                <title>{ TITLE }</title>
+                <link rel="icon" type="image/png" href="purple.png" sizes="16x16" />
+            </Helmet>
             <Switch>
                 <Route exact path="/"><Authentication /></Route>
 

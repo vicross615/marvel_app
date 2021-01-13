@@ -110,25 +110,5 @@ function Dashboard({}) {
 
     );
 }
-
-export const Month = ()=> (
-    <div>
-        <div>
-            Lore Ipsum
-        </div>
-        <img src={logo} alt="Logo" className="form_header_logo" />
-    </div>
-);
-
-
-
-export const AllTime = ()=> (
-    <div>
-        <div>
-            Lore Ipsum
-        </div>
-        <img src={logo} alt="Logo" className="form_header_logo" />
-    </div>
-);
 export default Dashboard;
 

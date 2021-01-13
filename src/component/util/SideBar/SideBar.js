@@ -55,8 +55,7 @@ function SideBar() {
             </div>
             <div style={{position: 'absolute',
                 bottom: 0}} >
-                <img src={uba_log} style={{width: '200px'}}
-            />
+                <img src={uba_log} style={{width: '200px'}}/>
             </div>
         </section>
     );

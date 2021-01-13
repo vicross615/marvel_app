@@ -1,6 +1,6 @@
 @media only screen and (max-width: 768px) {
     .sidebar_wrapper {
-        display: flex ! important;
+        display: none ! important;
         flex-direction: column;
         border: 1px solid;
         min-height: 300px ! important;

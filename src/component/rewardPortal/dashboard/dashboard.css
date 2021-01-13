@@ -5,9 +5,8 @@ and (max-device-width: 1024px) {
     .dashboard_content {
         display: flex;
         flex-direction: column;
-        height: 460px;
         justify-content: space-between;
-        height: 475px;
+        min-height: 475px;
         margin-top: 20px;
     }
 
@@ -24,7 +23,7 @@ and (max-device-width: 1024px) {
         width: 460px;
         justify-content: space-between;
         align-items: center;
-        height: 475px;
+        min-height: 475px;
         flex-direction: column;
         flex-wrap: nowrap !important ;
     }

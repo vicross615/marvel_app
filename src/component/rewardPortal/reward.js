@@ -25,16 +25,6 @@ function Reward() {
             <section className='reward_content_wrapper'>
                 <Sidebar />
                 <div className='reward_content'>
-                    {/*<Switch>*/}
-                        {/*<Route  path={`/reward/dashboard`} exact component={Dashboard}/>*/}
-                        {/*<Route path={`/reward/content_management`} component={ContentManagement}/>*/}
-                        {/*<Route path={`${path}/user_management`}>*/}
-                            {/*<UserManagement />*/}
-                        {/*</Route>*/}
-                        {/*<Route path={`/reward/reporting`}  exact component={Reporting}/>*/}
-                        {/*<Route />*/}
-                    {/*</Switch>*/}
-
 
                     <Switch>
                         <Route path={`${path}/:rewardsId`}>
@@ -61,8 +51,10 @@ function Rewards() {
                 <UserManagement  />
 
             ) : (
-
-                <Dashboard  />
+                <>
+                    {/*<Dashboard  />*/}
+                    <UserManagement  />
+                </>
             )}
         </>
     );

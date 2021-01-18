@@ -5,7 +5,7 @@
 AUTHENTICATION
 Merchants and signup using the react 
 #Firbase implemented Authentication module
-<img src='src/assets/authentication_screen.png' width=“500"/>
+<img src='src/assets/authentication_screen.png' />
                                                   
   DASHBOARD
   The dashboard provides access to see summary of development and activities 

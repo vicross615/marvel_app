@@ -3,14 +3,15 @@
 # MODULES
 
 AUTHENTICATION
-Merchants and signup using the react Firbase implemented Authentication module
+Merchants and signup using the react 
+#Firbase implemented Authentication module
 <img src='src/assets/authentication_screen.png' width=“500"/>
                                                   
   DASHBOARD
   The dashboard provides access to see summary of development and activities 
-  **With time selector
-  **Summary Cards
-  **and a mobile Friendly View
+  #With time selector
+  #Summary Cards
+  #and a mobile Friendly View
 
  <img src="src/assets/dashboard_screen.png" />
  

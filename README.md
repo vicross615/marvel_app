@@ -1,3 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with The Marvel_App
+
+
+<img src="src/logo.svg" />
 
 

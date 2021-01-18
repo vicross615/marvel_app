@@ -52,8 +52,7 @@ function Rewards() {
 
             ) : (
                 <>
-                    {/*<Dashboard  />*/}
-                    <UserManagement  />
+                    <Dashboard  />
                 </>
             )}
         </>

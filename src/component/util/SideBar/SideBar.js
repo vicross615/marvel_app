@@ -22,13 +22,13 @@ function SideBar() {
         <section className='sidebar_wrapper'>
             <div>
                 <ul className='sidebar_item_container'>
-                    {/*<li className='sidebar_item'>*/}
-                        {/*<div className='item_' >*/}
-                            {/*<FontAwesomeIcon icon={faColumns}/>*/}
-                            {/*<Link className='item_link' to={`/reward/dashboard`}>Dashboard</Link>*/}
-                            {/*<span></span>*/}
-                        {/*</div>*/}
-                    {/*</li>*/}
+                    <li className='sidebar_item'>
+                        <div className='item_' >
+                            <FontAwesomeIcon icon={faColumns}/>
+                            <Link className='item_link' to={`/reward/dashboard`}>Dashboard</Link>
+                            <span></span>
+                        </div>
+                    </li>
 
                     <li className='sidebar_item'>
                         <div  className='item_' onClick={toggleItem}>
